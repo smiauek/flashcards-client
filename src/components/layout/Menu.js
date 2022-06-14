@@ -1,25 +1,26 @@
 import React from "react";
+import "./menu.css";
 
 function Menu() {
   return (
-    <ul class="nav flex-column bg-dark ">
-      <li class="nav-item ">
-        <a class="nav-link text-white" href="/">
+    <ul className="nav flex-column bg-dark menu">
+      <li className="nav-item ">
+        <a className="nav-link text-white" href="/">
           Sign Up
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+      <li className="nav-item">
+        <a className="nav-link text-white" href="#">
           Sign In
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+      <li className="nav-item">
+        <a className="nav-link text-white" href="/">
           Browse
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
+      <li className="nav-item">
+        <a className="nav-link text-white" href="#">
           Search
         </a>
       </li>
