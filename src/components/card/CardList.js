@@ -1,12 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { deleteCard } from "../../utils/api";
 
 function CardList({ cards }) {
   const navigate = useNavigate();
-
-  async function deleteCard(cardId) {
-    await fetch(`http://localhost:8080/cards/${cardId}`, {method: "DELETE"})
-  }
 
   if (cards) {
     return cards.map((card, index) => (
@@ -48,7 +45,7 @@ function CardList({ cards }) {
               />
             </svg>
           </button>
-          <Link to={`/decks/${card.deckId}/cards/${card.id}/edit`}>
+          <Link to={`/decks/${card.deckId}/cards/${card.cardId}/edit`}>
             <button className="btn btn-secondary mr-1 float-right">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

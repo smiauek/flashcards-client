@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import CardList from "../card/CardList";
+import { deleteDeck, getDeck, getCards } from "../../utils/api";
 
 function Deck() {
   let navigate = useNavigate();
@@ -9,28 +10,14 @@ function Deck() {
 
   const deckId = useParams().deckId;
 
-  let getDeck = async () => {
-    let response = await fetch(`http://localhost:8080/decks/${deckId}`);
-    let result = await response.json();
-
-    setDeck(result);
-  };
-
   useEffect(() => {
-    getDeck();
+    getDeck(deckId).then(setDeck);
   }, [deckId]);
 
   const [cards, setCards] = useState([]);
 
-  let getCards = async () => {
-    let response = await fetch(`http://localhost:8080/cards/${deckId}`);
-    let result = await response.json();
-
-    setCards(result);
-  };
-
   useEffect(() => {
-    getCards();
+    getCards(deckId).then(setCards);
   }, [deckId]);
 
   return (
@@ -94,6 +81,7 @@ function Deck() {
                 if (
                   window.confirm("Are you sure you want to delete this deck?")
                 ) {
+                  await deleteDeck(deck.deckId);
                   navigate("/");
                 } else {
                   navigate(0);

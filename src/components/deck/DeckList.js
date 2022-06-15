@@ -1,16 +1,15 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { deleteDeck } from "../../utils/api";
 
 function DeckList({ deck }) {
- // const history = Navigate();
+  const navigate = useNavigate();
 
   return (
     <div className="card mb-1 col-9" deckid={deck.deckId}>
       <div className="card-body">
         <div className="row justify-content-between">
           <h5 className="card-title ml-2">{deck.name}</h5>
-          {/* <h6 className="mr-2">{deck.cards.length} cards</h6> */}
         </div>
 
         <p className="card-text">{deck.description}</p>
@@ -52,10 +51,10 @@ function DeckList({ deck }) {
               if (
                 window.confirm("Are you sure you want to delete this deck?")
               ) {
-                //await deleteDeck(deck.id);
-                history.go(0);
+                await deleteDeck(deck.deckId);
+                navigate(0);
               } else {
-                history.go(0);
+                navigate(0);
               }
             }
             remove();
