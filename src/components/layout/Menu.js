@@ -5,7 +5,7 @@ function Menu() {
   return (
     <ul className="nav flex-column bg-dark menu">
       <li className="nav-item ">
-        <a className="nav-link text-white" href="/">
+        <a className="nav-link text-white" href="/sign-up">
           Sign Up
         </a>
       </li>

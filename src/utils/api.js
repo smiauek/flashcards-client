@@ -74,3 +74,13 @@ export async function deleteCard(cardId) {
 export async function deleteDeck(deckId) {
   await fetch(API_BASE_URL + `/decks/${deckId}`, { method: "DELETE" });
 }
+
+export async function createUser(newUser) {
+  await fetch(API_BASE_URL + "/users/new", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newUser),
+  });
+}
