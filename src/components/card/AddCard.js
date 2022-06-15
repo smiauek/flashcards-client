@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import CardForm from "./CardForm";
+import { getDeck } from "../../utils/api";
 
 function AddCard() {
   const [deck, setDeck] = useState([]);
 
   const deckId = useParams().deckId;
 
-  let getDeck = async () => {
-    let response = await fetch(`http://localhost:8080/decks/${deckId}`);
-    let result = await response.json();
-
-    setDeck(result);
-  };
-
   useEffect(() => {
-    getDeck();
+    getDeck(deckId).then(setDeck);
   }, [deckId]);
 
   const navigate = useNavigate();
@@ -23,11 +17,10 @@ function AddCard() {
   const initialFormState = {
     front: "",
     back: "",
-    deckId: Number(deckId)
+    deckId: Number(deckId),
   };
 
   const [formData, setFormData] = useState({ ...initialFormState });
-
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -39,7 +32,7 @@ function AddCard() {
   const handleSave = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:8080/cards/new", {
+    await fetch("http://localhost:8080/cards/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

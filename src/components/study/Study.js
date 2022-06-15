@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { getDeck, getCards } from "../../utils/api";
 
 function Study() {
   let navigate = useNavigate();
@@ -8,31 +9,17 @@ function Study() {
 
   const deckId = useParams().deckId;
 
-  const [cardId, setCardId] = useState(1);
-
-  let getDeck = async () => {
-    let response = await fetch(`http://localhost:8080/decks/${deckId}`);
-    let result = await response.json();
-
-    setDeck(result);
-  };
+  const [cardNo, setCardNo] = useState(1);
 
   useEffect(() => {
-    getDeck();
+    getDeck(deckId).then(setDeck);
   }, [deckId]);
 
   const [cards, setCards] = useState([]);
 
-  let getCards = async () => {
-    let response = await fetch(`http://localhost:8080/cards/${deckId}`);
-    let result = await response.json();
-
-    setCards(result);
-  };
-
   useEffect(() => {
-    getCards();
-  }, []);
+    getCards(deckId).then(setCards);
+  }, [deckId]);
   console.log(cards);
 
   const [flip, setFlip] = useState(true);
@@ -45,10 +32,10 @@ function Study() {
         <div className="card col-8">
           <div className="card-body">
             <h5 className="card-title">
-              Card {cardId} of {cards.length}
+              Card {cardNo} of {cards.length}
             </h5>
             <p className="card-text">
-              {flip ? cards[cardId - 1].front : cards[cardId - 1].back}
+              {flip ? cards[cardNo - 1].front : cards[cardNo - 1].back}
             </p>
             <button
               className="btn btn-secondary"
@@ -60,15 +47,15 @@ function Study() {
               <button
                 className="btn btn-primary ml-1"
                 onClick={() => {
-                  if (cardId === cards.length) {
+                  if (cardNo === cards.length) {
                     if (window.confirm("Restart cards?")) {
-                      setCardId(1);
+                      setCardNo(1);
                       setFlip(!flip);
                     } else {
                       navigate("/");
                     }
                   } else {
-                    setCardId(cardId + 1);
+                    setCardNo(cardNo + 1);
                     setFlip(!flip);
                   }
                 }}

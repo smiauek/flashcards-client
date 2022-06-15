@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DeckList from "../deck/DeckList";
+import { getAllDecks } from "../../utils/api";
 
 function Browse() {
   const [decks, setDecks] = useState([]);
 
-  let getDecks = async () => {
-    let response = await fetch(`http://localhost:8080/decks/`);
-    let result = await response.json();
-
-    setDecks(result);
-  };
-
   useEffect(() => {
-    getDecks();
+    getAllDecks().then(setDecks);
   }, []);
 
   return (
