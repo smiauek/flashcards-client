@@ -24,6 +24,29 @@ export async function getOneCard(cardId) {
   return result;
 }
 
+export async function createDeck(newDeck) {
+  const response = await fetch(API_BASE_URL + "/decks/new", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newDeck),
+  });
+  const data = await response.json();
+
+  return data;
+}
+
+export async function createCard(newCard) {
+  await fetch(API_BASE_URL + "/cards/new", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newCard),
+  });
+}
+
 export async function updateCard(updatedCard) {
   await fetch(API_BASE_URL + `/cards/update/${updatedCard.cardId}`, {
     method: "PUT",
@@ -31,6 +54,16 @@ export async function updateCard(updatedCard) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(updatedCard),
+  });
+}
+
+export async function updateDeck(updatedDeck) {
+  await fetch(API_BASE_URL + `/decks/update/${updatedDeck.deckId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedDeck),
   });
 }
 

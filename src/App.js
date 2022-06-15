@@ -5,6 +5,7 @@ import AddCard from "./components/card/AddCard";
 import EditCard from "./components/card/EditCard";
 import CreateDeck from "./components/deck/CreateDeck";
 import Deck from "./components/deck/Deck";
+import EditDeck from "./components/deck/EditDeck";
 import Header from "./components/layout/Header";
 import Menu from "./components/layout/Menu";
 import NotFound from "./components/layout/NotFound";
@@ -32,6 +33,7 @@ function App() {
               element={<EditCard />}
             />
             <Route path="/decks/new" element={<CreateDeck />} />
+            <Route path="/decks/:deckId/edit" element={<EditDeck />} />
             <Route path="/browse/deck/:deckId" element={<Deck />} />
             <Route path="/browse" element={<Browse />} />
             <Route path="*" element={<NotFound />} />
