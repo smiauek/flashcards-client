@@ -4,6 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 function CardList({ cards }) {
   const navigate = useNavigate();
 
+  async function deleteCard(cardId) {
+    await fetch(`http://localhost:8080/cards/${cardId}`, {method: "DELETE"})
+  }
+
   if (cards) {
     return cards.map((card, index) => (
       <div className="card mb-1 col-8" key={index}>
@@ -22,7 +26,7 @@ function CardList({ cards }) {
                     "Delete this card? You will not be able to recover it."
                   )
                 ) {
-                  await deleteCard(card.id);
+                  await deleteCard(card.cardId);
                   navigate(0);
                 }
               }

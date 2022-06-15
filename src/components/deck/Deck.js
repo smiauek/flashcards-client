@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import CardList from "../card/CardList";
 
-
-
 function Deck() {
   let navigate = useNavigate();
 
@@ -11,28 +9,25 @@ function Deck() {
 
   const deckId = useParams().deckId;
 
+  let getDeck = async () => {
+    let response = await fetch(`http://localhost:8080/decks/${deckId}`);
+    let result = await response.json();
 
-  let getDeck = async ()  => {
-    let response = await fetch(`http://localhost:8080/decks/${deckId}`)
-    let result = await response.json()
-  
-    setDeck(result)
-  }
-
+    setDeck(result);
+  };
 
   useEffect(() => {
-   getDeck()
-    
+    getDeck();
   }, [deckId]);
 
   const [cards, setCards] = useState([]);
 
-  let getCards = async ()  => {
-    let response = await fetch(`http://localhost:8080/cards/${deckId}`)
-    let result = await response.json()
-  
-    setCards(result)
-  }
+  let getCards = async () => {
+    let response = await fetch(`http://localhost:8080/cards/${deckId}`);
+    let result = await response.json();
+
+    setCards(result);
+  };
 
   useEffect(() => {
     getCards();
@@ -46,7 +41,7 @@ function Deck() {
             <h5>{deck.name}</h5>
           </div>
           <p>{deck.description}</p>
-          <Link to={`/decks/${deck.id}/edit`}>
+          <Link to={`/decks/${deck.deckId}/edit`}>
             <button className="btn btn-secondary mr-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +94,6 @@ function Deck() {
                 if (
                   window.confirm("Are you sure you want to delete this deck?")
                 ) {
-                  
                   navigate("/");
                 } else {
                   navigate(0);
