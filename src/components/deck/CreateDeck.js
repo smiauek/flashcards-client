@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import DeckForm from "./DeckForm";
+import { createDeck } from "../../utils/api";
 
 function CreateDeck() {
   const navigate = useNavigate();
@@ -21,16 +22,11 @@ function CreateDeck() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:8080/decks/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await response.json();
+
+    let newDeck = await createDeck(formData);
+
     setFormData({ ...initialFormState });
-    navigate(`/browse/deck/${data.deckId}`);
+    navigate(`/browse/deck/${newDeck.deckId}`);
   };
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import CardForm from "./CardForm";
-import { getDeck } from "../../utils/api";
+import { getDeck, createCard } from "../../utils/api";
 
 function AddCard() {
   const [deck, setDeck] = useState([]);
@@ -32,13 +32,7 @@ function AddCard() {
   const handleSave = async (event) => {
     event.preventDefault();
 
-    await fetch("http://localhost:8080/cards/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    await createCard(formData);
 
     setFormData({ ...initialFormState });
     navigate(`/decks/${deckId}/cards/new`);

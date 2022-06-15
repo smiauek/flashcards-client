@@ -10,6 +10,7 @@ function Browse() {
     getAllDecks().then(setDecks);
   }, []);
 
+
   return (
     <>
       <div>
