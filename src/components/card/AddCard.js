@@ -28,7 +28,6 @@ function AddCard() {
 
   const [formData, setFormData] = useState({ ...initialFormState });
 
-  console.log(formData);
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -47,8 +46,6 @@ function AddCard() {
       },
       body: JSON.stringify(formData),
     });
-
-    console.log(JSON.stringify(formData))
 
     setFormData({ ...initialFormState });
     navigate(`/decks/${deckId}/cards/new`);
