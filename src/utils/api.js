@@ -18,6 +18,22 @@ export async function getCards(deckId) {
   return result;
 }
 
+export async function getOneCard(cardId) {
+  let response = await fetch(API_BASE_URL + `/cards/one/${cardId}`);
+  let result = await response.json();
+  return result;
+}
+
+export async function updateCard(updatedCard) {
+  await fetch(API_BASE_URL + `/cards/update/${updatedCard.cardId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedCard),
+  });
+}
+
 export async function deleteCard(cardId) {
   await fetch(API_BASE_URL + `/cards/${cardId}`, { method: "DELETE" });
 }
