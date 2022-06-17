@@ -42,7 +42,7 @@ function AddCard() {
     <>
       <h2>{deck.name}: Add Card</h2>
       <CardForm formData={formData} handleChange={handleChange} />
-      <Link to={`/browse/deck/${deckId}`}>
+      <Link to={`/dashboard/deck/${deckId}`}>
         <button className="btn btn-secondary mr-2">Done</button>
       </Link>
       <button

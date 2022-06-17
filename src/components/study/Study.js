@@ -20,7 +20,6 @@ function Study() {
   useEffect(() => {
     getCards(deckId).then(setCards);
   }, [deckId]);
-  console.log(cards);
 
   const [flip, setFlip] = useState(true);
 
@@ -52,7 +51,7 @@ function Study() {
                       setCardNo(1);
                       setFlip(!flip);
                     } else {
-                      navigate("/");
+                      navigate(-1);
                     }
                   } else {
                     setCardNo(cardNo + 1);

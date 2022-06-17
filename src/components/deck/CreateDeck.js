@@ -26,14 +26,14 @@ function CreateDeck() {
     let newDeck = await createDeck(formData);
 
     setFormData({ ...initialFormState });
-    navigate(`/browse/deck/${newDeck.deckId}`);
+    navigate(`/dashboard/deck/${newDeck.deckId}`);
   };
 
   return (
     <>
       <h2>Create Deck</h2>
       <DeckForm formData={formData} handleChange={handleChange} />
-      <Link to="/">
+      <Link to="/dashboard">
         <button className="btn btn-secondary mr-2">Cancel</button>
       </Link>
       <button

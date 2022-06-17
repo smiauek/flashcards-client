@@ -88,7 +88,7 @@ function Deck() {
                       )
                     ) {
                       await deleteDeck(deck.deckId);
-                      navigate("/");
+                      navigate("/dashboard");
                     } else {
                       navigate(0);
                     }
