@@ -18,6 +18,14 @@ export async function getUserDecks(userId) {
   return result;
 }
 
+export async function findDecks(searchTerm) {
+  let response = await fetch(
+    API_BASE_URL + `/decks/find?searchTerm=${searchTerm}`
+  );
+  let result = await response.json();
+  return result;
+}
+
 export async function getCards(deckId) {
   let response = await fetch(API_BASE_URL + `/cards/${deckId}`);
   let result = await response.json();

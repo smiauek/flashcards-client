@@ -29,14 +29,14 @@ function EditCard() {
   const handleSave = async (event) => {
     event.preventDefault();
     await updateCard(card);
-    navigate(`/browse/deck/${deckId}`);
+    navigate(`/dashboard/deck/${deckId}`);
   };
 
   return (
     <>
       <h2>Edit Card</h2>
       <CardForm formData={card} handleChange={handleChange} />
-      <Link to={`/browse/deck/${deckId}`}>
+      <Link to={`/dashboard/deck/${deckId}`}>
         <button className="btn btn-secondary mr-2">Cancel</button>
       </Link>
       <button

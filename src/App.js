@@ -17,13 +17,13 @@ import Account from "./components/menu/Account";
 import Dashboard from "./components/menu/Dashboard";
 
 function App() {
-  // const [user, setUser] = useState({});
+  const [user, setUser] = useState({});
 
-  const [user, setUser] = useState({
-    userId: 1,
-    username: "user1",
-    email: "email1@email.com",
-  });
+  // const [user, setUser] = useState({
+  //   userId: 1,
+  //   username: "user1",
+  //   email: "email1@email.com",
+  // });
 
   return (
     <div>
@@ -53,7 +53,7 @@ function App() {
               path="/decks/:deckId/cards/:cardId/edit"
               element={<EditCard />}
             />
-            <Route path="/decks/new" element={<CreateDeck />} />
+            <Route path="/decks/new" element={<CreateDeck user={user} />} />
             <Route path="/decks/:deckId/edit" element={<EditDeck />} />
             <Route path="/browse/deck/:deckId" element={<Deck />} />
             <Route path="/dashboard/deck/:deckId" element={<Deck />} />

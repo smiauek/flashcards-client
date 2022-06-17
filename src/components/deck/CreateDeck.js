@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import DeckForm from "./DeckForm";
 import { createDeck } from "../../utils/api";
 
-function CreateDeck() {
+function CreateDeck({ user }) {
   const navigate = useNavigate();
 
   const initialFormState = {
+    userId: user.userId,
     name: "",
     description: "",
   };
@@ -26,14 +27,14 @@ function CreateDeck() {
     let newDeck = await createDeck(formData);
 
     setFormData({ ...initialFormState });
-    navigate(`/browse/deck/${newDeck.deckId}`);
+    navigate(`/dashboard/deck/${newDeck.deckId}`);
   };
 
   return (
     <>
       <h2>Create Deck</h2>
       <DeckForm formData={formData} handleChange={handleChange} />
-      <Link to="/">
+      <Link to="/dashboard">
         <button className="btn btn-secondary mr-2">Cancel</button>
       </Link>
       <button

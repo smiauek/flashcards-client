@@ -24,14 +24,14 @@ function EditDeck() {
   const handleSave = async (event) => {
     event.preventDefault();
     await updateDeck(deck);
-    navigate(`/browse/deck/${deckId}`);
+    navigate(`/dashboard/deck/${deckId}`);
   };
 
   return (
     <>
       <h2>Edit Deck</h2>
       <DeckForm formData={deck} handleChange={handleChange} />
-      <Link to={`/browse/deck/${deckId}`}>
+      <Link to={`/dashboard/deck/${deckId}`}>
         <button className="btn btn-secondary mr-2">Cancel</button>
       </Link>
       <button
