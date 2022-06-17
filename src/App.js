@@ -17,13 +17,13 @@ import Account from "./components/menu/Account";
 import Dashboard from "./components/menu/Dashboard";
 
 function App() {
-  // const [user, setUser] = useState({});
+  const [user, setUser] = useState({});
 
-  const [user, setUser] = useState({
-    userId: 1,
-    username: "user1",
-    email: "email1@email.com",
-  });
+  // const [user, setUser] = useState({
+  //   userId: 1,
+  //   username: "user1",
+  //   email: "email1@email.com",
+  // });
 
   return (
     <div>
