@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Browse from "./components/menu/Browse";
 import AddCard from "./components/card/AddCard";
@@ -11,8 +11,13 @@ import Menu from "./components/layout/Menu";
 import NotFound from "./components/layout/NotFound";
 import Study from "./components/study/Study";
 import SignUp from "./components/menu/SignUp";
+import SignIn from "./components/menu/SignIn";
 
 function App() {
+  const [user, setUser] = useState({});
+
+  // const [user, setUser] = useState({userId: 1, username: "user1"});
+
   return (
     <div>
       <Header />
@@ -28,6 +33,7 @@ function App() {
               element={<Navigate to="/browse" replace />}
             />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/sign-in" element={<SignIn />} />
             <Route path="/decks/:deckId/study" element={<Study />} />
             <Route path="/decks/:deckId/cards/new" element={<AddCard />} />
             <Route
