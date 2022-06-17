@@ -12,6 +12,12 @@ export async function getAllDecks() {
   return result;
 }
 
+export async function getUserDecks(userId) {
+  let response = await fetch(API_BASE_URL + `/decks/user/${userId}`);
+  let result = await response.json();
+  return result;
+}
+
 export async function getCards(deckId) {
   let response = await fetch(API_BASE_URL + `/cards/${deckId}`);
   let result = await response.json();
