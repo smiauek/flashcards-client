@@ -53,7 +53,7 @@ function App() {
               path="/decks/:deckId/cards/:cardId/edit"
               element={<EditCard />}
             />
-            <Route path="/decks/new" element={<CreateDeck />} />
+            <Route path="/decks/new" element={<CreateDeck user={user} />} />
             <Route path="/decks/:deckId/edit" element={<EditDeck />} />
             <Route path="/browse/deck/:deckId" element={<Deck />} />
             <Route path="/dashboard/deck/:deckId" element={<Deck />} />

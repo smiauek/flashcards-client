@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import DeckForm from "./DeckForm";
 import { createDeck } from "../../utils/api";
 
-function CreateDeck() {
+function CreateDeck({ user }) {
   const navigate = useNavigate();
 
   const initialFormState = {
+    userId: user.userId,
     name: "",
     description: "",
   };
