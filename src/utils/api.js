@@ -13,7 +13,11 @@ export async function getAllDecks() {
 }
 
 export async function getUserDecks(userId) {
-  let response = await fetch(API_BASE_URL + `/decks/user/${userId}`);
+  let response = await fetch(API_BASE_URL + `/decks/user/${userId}`, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
   let result = await response.json();
   return result;
 }
@@ -33,7 +37,11 @@ export async function getCards(deckId) {
 }
 
 export async function getOneCard(cardId) {
-  let response = await fetch(API_BASE_URL + `/cards/one/${cardId}`);
+  let response = await fetch(API_BASE_URL + `/cards/one/${cardId}`, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
   let result = await response.json();
   return result;
 }
@@ -43,6 +51,7 @@ export async function createDeck(newDeck) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
     },
     body: JSON.stringify(newDeck),
   });
@@ -56,6 +65,7 @@ export async function createCard(newCard) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
     },
     body: JSON.stringify(newCard),
   });
@@ -66,6 +76,7 @@ export async function updateCard(updatedCard) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
     },
     body: JSON.stringify(updatedCard),
   });
@@ -76,17 +87,28 @@ export async function updateDeck(updatedDeck) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
     },
     body: JSON.stringify(updatedDeck),
   });
 }
 
 export async function deleteCard(cardId) {
-  await fetch(API_BASE_URL + `/cards/${cardId}`, { method: "DELETE" });
+  await fetch(API_BASE_URL + `/cards/${cardId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
 }
 
 export async function deleteDeck(deckId) {
-  await fetch(API_BASE_URL + `/decks/${deckId}`, { method: "DELETE" });
+  await fetch(API_BASE_URL + `/decks/delete/${deckId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
 }
 
 export async function createUser(newUser) {
@@ -97,4 +119,27 @@ export async function createUser(newUser) {
     },
     body: JSON.stringify(newUser),
   });
+}
+
+export async function signIn(creds) {
+  const response = await fetch(API_BASE_URL + "/user/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(creds),
+  });
+  const data = await response.text();
+
+  return data;
+}
+
+export async function getUserDetails(username) {
+  let response = await fetch(API_BASE_URL + `/users/one?username=${username}`, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+  let result = await response.json();
+  return result;
 }

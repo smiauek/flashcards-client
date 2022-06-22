@@ -27,7 +27,7 @@ function SignUp() {
     await createUser(formData);
 
     setFormData({ ...initialFormState });
-    navigate(`/`);
+    navigate(`/sign-in`);
   };
 
   return (

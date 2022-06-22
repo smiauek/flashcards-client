@@ -40,7 +40,7 @@ function App() {
               element={<Navigate to="/browse" replace />}
             />
             <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
             <Route path="/search" element={<SearchDecks />} />
             <Route path="/dashboard" element={<Dashboard user={user} />} />
             <Route
