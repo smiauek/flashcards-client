@@ -7,7 +7,11 @@ function Menu({ user }) {
       {user.userId ? (
         <>
           <li className="nav-item ">
-            <a className="nav-link text-white" href="/">
+            <a
+              className="nav-link text-white"
+              href="/"
+              onClick={() => localStorage.clear()}
+            >
               Sign Out
             </a>
           </li>

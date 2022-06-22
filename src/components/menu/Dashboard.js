@@ -7,7 +7,6 @@ function Dashboard({ user }) {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
-    console.log("dashboard",user)
     getUserDecks(user.userId).then(setDecks);
   }, [user]);
 
