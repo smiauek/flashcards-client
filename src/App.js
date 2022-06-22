@@ -17,13 +17,12 @@ import Account from "./components/menu/Account";
 import Dashboard from "./components/menu/Dashboard";
 
 function App() {
-  const [user, setUser] = useState({});
+  let userDetails = {};
+  userDetails.userId = localStorage.getItem("userId");
+  userDetails.username = localStorage.getItem("username");
+  userDetails.email = localStorage.getItem("email");
 
-  // const [user, setUser] = useState({
-  //   userId: 1,
-  //   username: "user1",
-  //   email: "email1@email.com",
-  // });
+  const [user, setUser] = useState(userDetails.userId ? userDetails : {});
 
   return (
     <div>
@@ -40,7 +39,7 @@ function App() {
               element={<Navigate to="/browse" replace />}
             />
             <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
             <Route path="/search" element={<SearchDecks />} />
             <Route path="/dashboard" element={<Dashboard user={user} />} />
             <Route

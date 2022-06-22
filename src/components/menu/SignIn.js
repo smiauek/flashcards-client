@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import SignInForm from "../user/SignInForm";
+import { signIn, getUserDetails } from "../../utils/api";
 
-function SignIn() {
+function SignIn({ setUser }) {
   const navigate = useNavigate();
 
   const initialFormState = {
@@ -22,10 +23,28 @@ function SignIn() {
   const handleSignIn = async (event) => {
     event.preventDefault();
 
-    //   await signIn(formData);
+    let response = await signIn(formData);
+
+    console.log(response)
+    let temp = response.split(" ");
+
+    console.log(temp)
+    let username = temp[0];
+    let token = temp[1];
+
+    localStorage.setItem("token", token);
+    console.log("local storage", localStorage.getItem("token"))
+
+    let userDetails = await getUserDetails(username);
+
+    setUser(userDetails)
+
+    localStorage.setItem("username", userDetails.username);
+    localStorage.setItem("userId", userDetails.userId);
+    localStorage.setItem("email", userDetails.email);
 
     setFormData({ ...initialFormState });
-    navigate(`/`);
+    navigate(`/dashboard`);
   };
 
   return (
