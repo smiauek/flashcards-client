@@ -94,7 +94,7 @@ export async function updateDeck(updatedDeck) {
 }
 
 export async function deleteCard(cardId) {
-  await fetch(API_BASE_URL + `/cards/${cardId}`, {
+  await fetch(API_BASE_URL + `/cards/delete/${cardId}`, {
     method: "DELETE",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
