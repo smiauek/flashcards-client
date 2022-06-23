@@ -55,9 +55,8 @@ export async function createDeck(newDeck) {
     },
     body: JSON.stringify(newDeck),
   });
-  const data = await response.json();
 
-  return data;
+  return response;
 }
 
 export async function createCard(newCard) {
