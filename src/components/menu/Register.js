@@ -4,7 +4,7 @@ import UserForm from "../user/UserForm";
 import { createUser } from "../../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 
-function SignUp() {
+function Register() {
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState(null);
@@ -60,4 +60,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Register;

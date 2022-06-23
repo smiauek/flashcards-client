@@ -14,7 +14,7 @@ function Menu({ user }) {
               className="nav-link text-white"
               href="/"
               onClick={() => {
-                if (window.confirm("Log out?")) {
+                if (window.confirm("Sign out?")) {
                   localStorage.clear();
                   navigate("/");
                 } else {
@@ -39,8 +39,8 @@ function Menu({ user }) {
       ) : (
         <>
           <li className="nav-item ">
-            <a className="nav-link text-white" href="/sign-up">
-              Sign Up
+            <a className="nav-link text-white" href="/register">
+              Register
             </a>
           </li>
           <li className="nav-item">
