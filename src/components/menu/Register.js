@@ -34,9 +34,8 @@ function Register() {
       navigate(`/sign-in`);
     } else {
       let err = Object.values(await response.json());
-      console.log(err);
+
       setErrors(err);
-      console.log(errors);
     }
   };
 

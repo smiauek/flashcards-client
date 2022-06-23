@@ -25,19 +25,16 @@ function SignIn({ setUser }) {
 
     let response = await signIn(formData);
 
-    console.log(response)
     let temp = response.split(" ");
 
-    console.log(temp)
     let username = temp[0];
     let token = temp[1];
 
     localStorage.setItem("token", token);
-    console.log("local storage", localStorage.getItem("token"))
 
     let userDetails = await getUserDetails(username);
 
-    setUser(userDetails)
+    setUser(userDetails);
 
     localStorage.setItem("username", userDetails.username);
     localStorage.setItem("userId", userDetails.userId);

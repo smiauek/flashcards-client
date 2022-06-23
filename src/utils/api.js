@@ -120,8 +120,6 @@ export async function createUser(newUser) {
     body: JSON.stringify(newUser),
   });
 
-  //console.log(response.json());
-  console.log(response.status);
   return response;
 }
 
