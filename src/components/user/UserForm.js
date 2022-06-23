@@ -15,6 +15,7 @@ function UserForm({ formData, handleChange }) {
             name="username"
             placeholder="Enter username"
             required
+            minLength="4"
             onChange={handleChange}
             value={formData.username}
           />
@@ -25,7 +26,7 @@ function UserForm({ formData, handleChange }) {
           </label>
           <input
             className="form-control"
-            type="text"
+            type="email"
             id="email"
             name="email"
             placeholder="Enter email"
@@ -45,6 +46,7 @@ function UserForm({ formData, handleChange }) {
             name="password"
             placeholder="Enter password"
             required
+            minLength="4"
             onChange={handleChange}
             value={formData.password}
           />
