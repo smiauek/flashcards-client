@@ -82,14 +82,19 @@ export async function updateCard(updatedCard) {
 }
 
 export async function updateDeck(updatedDeck) {
-  await fetch(API_BASE_URL + `/decks/update/${updatedDeck.deckId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-    body: JSON.stringify(updatedDeck),
-  });
+  const response = await fetch(
+    API_BASE_URL + `/decks/update/${updatedDeck.deckId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify(updatedDeck),
+    }
+  );
+
+  return response;
 }
 
 export async function deleteCard(cardId) {
