@@ -16,7 +16,6 @@ function SearchDecks() {
       ...formData,
       [target.name]: target.value,
     });
-    console.log(formData);
   };
 
   const handleFind = async (event) => {

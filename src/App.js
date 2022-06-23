@@ -10,11 +10,11 @@ import Header from "./components/layout/Header";
 import Menu from "./components/layout/Menu";
 import NotFound from "./components/layout/NotFound";
 import Study from "./components/study/Study";
-import SignUp from "./components/menu/SignUp";
 import SignIn from "./components/menu/SignIn";
 import SearchDecks from "./components/menu/SearchDecks";
 import Account from "./components/menu/Account";
 import Dashboard from "./components/menu/Dashboard";
+import Register from "./components/menu/Register";
 
 function App() {
   let userDetails = {};
@@ -38,7 +38,7 @@ function App() {
               path="/"
               element={<Navigate to="/browse" replace />}
             />
-            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
             <Route path="/search" element={<SearchDecks />} />
             <Route path="/dashboard" element={<Dashboard user={user} />} />

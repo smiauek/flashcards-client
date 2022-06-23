@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import UserForm from "../user/UserForm";
 import { createUser } from "../../utils/api";
+import ErrorAlert from "../layout/ErrorAlert";
 
-function SignUp() {
+function Register() {
   const navigate = useNavigate();
+
+  const [errors, setErrors] = useState(null);
 
   const initialFormState = {
     username: "",
@@ -24,15 +27,22 @@ function SignUp() {
   const handleSave = async (event) => {
     event.preventDefault();
 
-    await createUser(formData);
+    let response = await createUser(formData);
 
-    setFormData({ ...initialFormState });
-    navigate(`/sign-in`);
+    if (response.status === 201) {
+      setFormData({ ...initialFormState });
+      navigate(`/sign-in`);
+    } else {
+      let err = Object.values(await response.json());
+
+      setErrors(err);
+    }
   };
 
   return (
     <>
       <h1>Create Account:</h1>
+      <ErrorAlert errors={errors} />
       <UserForm formData={formData} handleChange={handleChange} />
       <button
         form="userForm"
@@ -49,4 +59,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Register;
