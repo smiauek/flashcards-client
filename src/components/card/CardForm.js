@@ -3,7 +3,7 @@ import React from "react";
 function CardForm({ formData, handleChange }) {
   return (
     <>
-      <form id="CardForm" className="col-8">
+      <form id="cardForm" className="col-8">
         <div className="mb-3">
           <label className="form-label" htmlFor="front">
             Front

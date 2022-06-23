@@ -35,7 +35,7 @@ function SignUp() {
       <h1>Create Account:</h1>
       <UserForm formData={formData} handleChange={handleChange} />
       <button
-        form="cardForm"
+        form="userForm"
         type="submit"
         className="btn btn-primary"
         onClick={handleSave}
