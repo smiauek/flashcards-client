@@ -112,13 +112,17 @@ export async function deleteDeck(deckId) {
 }
 
 export async function createUser(newUser) {
-  await fetch(API_BASE_URL + "/users/new", {
+  const response = await fetch(API_BASE_URL + "/users/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newUser),
   });
+
+  //console.log(response.json());
+  console.log(response.status);
+  return response;
 }
 
 export async function signIn(creds) {
