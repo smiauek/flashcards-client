@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getDeck, getOneCard, updateCard } from "../../utils/api";
+import { getOneCard, updateCard } from "../../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import CardForm from "./CardForm";
 
 function EditCard() {
-  const [deck, setDeck] = useState([]);
   const [card, setCard] = useState({});
   const [errors, setErrors] = useState(null);
 
   const { deckId, cardId } = useParams();
-
-  useEffect(() => {
-    getDeck(deckId).then(setDeck);
-  }, [deckId]);
 
   useEffect(() => {
     getOneCard(cardId).then(setCard);
