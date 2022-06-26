@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://localhost:8080";
+// const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "https://gentle-shelf-18588.herokuapp.com/";
 
 export async function getDeck(deckId) {
   let response = await fetch(API_BASE_URL + `/decks/${deckId}`);
