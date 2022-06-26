@@ -42,6 +42,8 @@ function SearchDecks() {
 
       {foundDecks.length > 0 &&
         foundDecks.map((deck) => <DeckList key={deck.deckId} deck={deck} />)}
+      <br />
+      <br />
     </>
   );
 }

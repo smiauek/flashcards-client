@@ -18,6 +18,8 @@ function Browse() {
           ? decks.map((deck) => <DeckList key={deck.deckId} deck={deck} />)
           : "Loading decks..."}
       </div>
+      <br />
+      <br />
     </>
   );
 }
