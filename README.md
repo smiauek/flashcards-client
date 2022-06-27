@@ -28,7 +28,7 @@ After succesful login, we're being redirected to `/dashboard` where we can see o
 - add better error handling (backend + frontend)  
 - improve form validations (backend + frontend)  
 - add comment section for decks (?) (frontend + backend)  
-- add some ranking system to determine which decks are liked the most/least by users (frontend + backend)  
+- add ranking system to determine which decks are most/least liked by the users (frontend + backend)  
 - add sort option to browse and search results (frontend)  
   
 
