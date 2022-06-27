@@ -20,4 +20,15 @@ After succesful login, we're being redirected to `/dashboard` where we can see o
 ![dashboard2](/pics/dashboard2.png)  
   
   
+## To Do:  
+- add option for registered users to edit/delete their account (frontend + backend)   
+- add automatic sign out before the expiration of the token (frontend)  
+- make search case insensitive (backend)  
+- restrict number of decks lodaing in browse and search results (backend?)  
+- add better error handling (backend + frontend)  
+- improve form validations (backend + frontend)  
+- add comment section for decks (?) (frontend + backend)  
+- add some ranking system to determine which decks are liked the most/least by users (frontend + backend)  
+- add sort option to browse and search results (frontend)  
+  
 
